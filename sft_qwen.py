@@ -86,8 +86,8 @@ def main():
     # # Parse arguments
     # args = parser.parse_args()
 
-    epoch = 30 if args.epochs is None else args.epochs
-    batch_size = 2 if args.batch_size is None else args.batch_size
+    # epoch = 30 if args.epochs is None else args.epochs
+    # batch_size = 2 if args.batch_size is None else args.batch_size
 
     args = TrainingArguments(
         output_dir='qwen_sft_4b_v2',
