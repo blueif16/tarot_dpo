@@ -102,7 +102,7 @@ def main():
 
     trainer = SFTTrainer(
         model,
-        tokenizer=tokenizer,
+        # tokenizer=tokenizer,
         train_dataset=dataset,
         args=args,
         formatting_func=formatting_prompts_func,
