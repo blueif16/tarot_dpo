@@ -1,5 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
+from datasets import load_dataset
 
 from dotenv import load_dotenv
 import os
@@ -16,5 +17,10 @@ train_dataset = load_dataset(os.getenv("PREF_REPO_ID"))
 
 from trl import DPOTrainer, DPOConfig
 training_args = DPOConfig(output_dir="qwen_dpo_v2", logging_steps=10)
-trainer = DPOTrainer(model=model, args=training_args, processing_class=tokenizer, train_dataset=train_dataset)
+trainer = DPOTrainer(
+    model=model, 
+    args=training_args, 
+    tokenizer=tokenizer,
+    train_dataset=train_dataset,
+)
 trainer.train()
