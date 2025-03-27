@@ -51,14 +51,15 @@ collator = DataCollatorForCompletionOnlyLM(response_template, tokenizer=tokenize
 
 compute_dtype = getattr(torch, "float16")
 
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_use_double_quant=False,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=compute_dtype
-)
+# bnb_config = BitsAndBytesConfig(
+#     load_in_4bit=True,
+#     bnb_4bit_use_double_quant=False,
+#     bnb_4bit_quant_type="nf4",
+#     bnb_4bit_compute_dtype=compute_dtype
+# )
 
-model = AutoModelForCausalLM.from_pretrained(base_model, quantization_config=bnb_config)
+# model = AutoModelForCausalLM.from_pretrained(base_model, quantization_config=bnb_config)
+model = AutoModelForCausalLM.from_pretrained(base_model)
 print(model.get_memory_footprint())
 
 peft_config = LoraConfig(r=32,
